@@ -1,0 +1,30 @@
+
+#chat-container {
+    width: 400px;
+    margin: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#chat-history {
+    height: 300px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+#user-input input[type="text"] {
+    width: 70%;
+    padding: 5px;
+}
+
+#user-input button {
+    padding: 5px;
+}
+
+#user-input {
+    display: flex;
+    justify-content: space-between;
+}
