@@ -1,0 +1,138 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-orange">
+    <div class="container">
+        <a class="navbar-brand" href="#">Smart Chatbot</a>
+</div></nav>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-12">
+      <h3>Creating Chatbot for Your: {{selectedOption}}</h3>
+      <div class="card">
+        <div class="card-body">
+          <form #stepperForm="ngForm" (ngSubmit)="onSubmit()" class="horizontal-form">
+            <div class="form-step horizontal-step" [ngClass]="{'active': currentStep === 0}">
+              <h3>Step 1 - UI</h3>
+              <div class="form-group">
+                <label for="chat-heading">Chat Bot Name</label>
+                <input type="text" class="form-control" id="chat-heading" name="chat-heading" [(ngModel)]="formData['chat-heading']">
+              </div>
+              <div class="form-group">
+                <label for="color">Color Gradient</label>
+                <div class="d-flex flex-wrap">
+                  <!-- Example color options with unique IDs -->
+                  <div class="color-option gradient1" data-value="gradient1" [class.selected]="selectedColor === 'gradient1'" (click)="setColor('gradient1')"></div>
+                  <div class="color-option gradient2" data-value="gradient2" [class.selected]="selectedColor === 'gradient2'" (click)="setColor('gradient2')"></div>
+                  <div class="color-option gradient3" data-value="gradient3" [class.selected]="selectedColor === 'gradient3'" (click)="setColor('gradient3')"></div>
+                  <div class="color-option gradient4" data-value="gradient4" [class.selected]="selectedColor === 'gradient4'" (click)="setColor('gradient4')"></div>
+                </div>
+                <input type="hidden" id="color" name="color" [value]="selectedColor">
+              </div>
+              <div class="row mt-4">
+                <div class="col-lg-12 text-center">
+              <div class="button-group">
+                <button class="btn btn-primary" type="button" (click)="nextStep()">Next</button>
+              </div>
+              </div>
+              </div>
+            </div>
+            
+            <div class="form-step horizontal-step" [ngClass]="{'active': currentStep === 1}">
+              <h3>Step 2 - Message</h3>
+              <div class="form-group">
+                <label for="welcome-message">Welcome Message</label>
+                <textarea class="form-control" placeholder="Ex - Welcome to Chat - BlackR Industries" id="welcome-message" name="welcome-message" rows="3" [(ngModel)]="formData['welcome-message']"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="error-message">Error Message</label>
+                <textarea class="form-control" id="error-message" placeholder="Ex - Sorry I can't solve this if need more help please ask at BlackRIndustries@gmail.com" name="error-message" rows="3" [(ngModel)]="formData['error-message']"></textarea>
+              </div>
+              <div class="row mt-4">
+                <div class="col-lg-12 text-center">
+              <div class="button-group">
+                <button class="btn btn-primary mr-2" type="button" (click)="prevStep()">Previous</button>
+                <button class="btn btn-primary" type="button" (click)="nextStep()">Next</button>
+              </div>
+              </div>
+              </div>
+            </div>
+            
+            <div class="form-step vertical-step" [ngClass]="{'active': currentStep === 2}">
+              <h3>Step 3 - Human Agent</h3>
+              <div class="container mt-4">
+                <div class="row">
+                  <div class="col-lg-6 mb-3">
+                    <div class="card">
+                      <div class="card-header bg-light">
+                        <h4>Contact Availability</h4>
+                      </div>
+                      <div class="card-body">
+                        <p>Select when your team should be available to contact with visitors on.</p>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="availability" id="alwaysAvailable" value="always" checked [(ngModel)]="formData['availability']">
+                          <label class="form-check-label" for="alwaysAvailable">Always available</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="availability" id="customHours" value="custom" [(ngModel)]="formData['availability']">
+                          <label class="form-check-label" for="customHours">Custom hours</label>
+                        </div>
+                        
+                       <!-- If "Custom hours" is selected, show the time input fields -->
+            <div *ngIf="formData['availability'] === 'custom'" class="mt-3">
+              <label for="fromTime">From:</label>
+              <input type="text" class="form-control" id="fromTime" name="fromTime" [(ngModel)]="formData['fromTime']">
+              <label for="toTime">To:</label>
+              <input type="text" class="form-control" id="toTime" name="toTime" [(ngModel)]="formData['toTime']">
+            </div>
+          </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="card">
+                      <div class="card-header bg-light">
+                        <h4>Channel Availability</h4>
+                      </div>
+                      <div class="card-body">
+                        <p>Select which channels you offer contact on:</p>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="channels" id="website" value="website" [(ngModel)]="formData['channels']">
+                          <label class="form-check-label" for="website">Website</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="channels" id="app" value="App" [(ngModel)]="formData['channels']">
+                          <label class="form-check-label" for="app">App</label>
+                        </div>
+                        
+                      </div>
+                      
+                    </div>
+                  </div>
+                  
+                </div>
+                <!-- Will work on this during hackathon -->
+                <div class="row mt-4">
+                  <div class="col-lg-12">
+                    <div class="card">
+                      <div class="card-header bg-light">
+                        <h4>Upload PDF</h4>
+                      </div>
+                      <div class="form-group">
+                        <label for="pdfFile">Upload PDF File</label>
+                        <input type="file" class="form-control-file" id="pdfFile" name="pdfFile" (change)="onFileSelected($event)">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-4">
+                  <div class="col-lg-12 text-center">
+                    <button class="btn btn-primary mr-2" type="button" (click)="prevStep()">Previous</button>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

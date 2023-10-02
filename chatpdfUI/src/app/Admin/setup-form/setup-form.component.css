@@ -1,0 +1,84 @@
+.horizontal-form .form-step {
+    display: none;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+  }
+  
+  .horizontal-form .form-step.active {
+    display: block;
+  }
+  
+  .horizontal-form .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .horizontal-step {
+    width: 100%;
+    float: left;
+  }
+  
+  /* Remove text-center styling for buttons */
+  
+  /* Define custom colors */
+.bg-orange {
+  background-color: #ff9900 !important;
+}
+
+.bg-cream {
+  background-color: #f7ebd0 !important;
+}
+
+.btn-orange {
+  background-color: #ff9900;
+  color: #fff;
+  border: none;
+}
+
+/* Adjust the style of the navigation bar */
+.navbar {
+  padding: 20px 0;
+}
+
+.navbar-brand {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-link {
+  font-weight: bold;
+  color: #fff !important;
+  margin-right: 20px;
+}
+
+
+
+  /* ----------------------- Page 1--------------------------- */
+   /* Define custom color gradients */
+   .gradient1 {
+    background: linear-gradient(to right, #ff9900, #ffcc00);
+}
+
+.gradient2 {
+    background: linear-gradient(to right, #0099cc, #00cc66);
+}
+
+.gradient3 {
+    background: linear-gradient(to right, #ff6666, #ff3399);
+}
+
+.gradient4 {
+    background: linear-gradient(to right, #9933cc, #6633ff);
+}
+/* Style for the circular color options */
+.color-option {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.color-option.selected {
+  border: 2px solid #000; /* You can adjust the border color and other properties as needed */
+}

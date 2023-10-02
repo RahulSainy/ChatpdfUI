@@ -1,0 +1,113 @@
+
+.chat-container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat-header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.chat-messages {
+    padding: 10px;
+    min-height: 300px;
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
+.chat-input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+#user-input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#send-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#send-button:hover {
+    background-color: #0056b3;
+}
+
+/* Existing CSS styles */
+
+.chat-toolbar {
+    background-color: #f4f4f4;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbot-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.toolbar-icons {
+    font-size: 20px;
+}
+
+.toolbar-icons i {
+    margin-right: 10px;
+    cursor: pointer;
+    color: #007bff;
+}
+
+.toolbar-icons i:hover {
+    color: #0056b3;
+}
+
+/* Existing CSS styles */
+
+/* Add these new styles for user and bot messages */
+.message {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    clear: both;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+.user-message {
+    background-color: #007bff;
+    color: #fff;
+    float: right;
+}
+
+.bot-message {
+    background-color: #ddd;
+    float: left;
+}
+
+
+
+
+
+
+
+
+
+
