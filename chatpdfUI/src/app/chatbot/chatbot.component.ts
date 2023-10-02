@@ -28,11 +28,12 @@ export class ChatbotComponent implements OnInit {
     // Retrieve the form data from the service
     this.formData = this.formDataService.getFormData();
   }
-
   sendMessage() {
     if (this.userMessage.trim() === '') {
       return; // Handle empty messages, if needed
     }
+  
+    console.log('Sending user message:', this.userMessage); // Add this log
   
     // Create an array to store the chat message
     const chatMessage = {
@@ -54,15 +55,18 @@ export class ChatbotComponent implements OnInit {
         messages: [chatMessage],
       };
   
+      console.log('Sending chat message data:', chatData); // Add this log
+  
       // Send the chat message to the PDF using the ChatPDF.com API
       axios.post('https://api.chatpdf.com/v1/chats/message', chatData, {
         headers: {
-          'x-api-key': 'YOUR_API_KEY', // Replace with your ChatPDF.com API key
+          'x-api-key': 'sec_4puyAwfuTudnn8AvNvzgSDNnpPRzmyqK', // Replace with your ChatPDF.com API key
           'Content-Type': 'application/json',
         },
       })
       .then((response: any) => {
         // Handle the response from ChatPDF.com API
+        console.log('Received bot response:', response.data.content); // Add this log
         const botResponse = {
           role: 'assistant',
           content: response.data.content, // Extracted content from the PDF
@@ -80,6 +84,4 @@ export class ChatbotComponent implements OnInit {
     // Clear the user input field
     this.userMessage = '';
   }
-  
-
-}
+}  
