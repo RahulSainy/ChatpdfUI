@@ -75,7 +75,7 @@ export class ChatbotComponent implements OnInit {
         };
 
         // Check if the response contains an error message or not found message
-        if (botResponse.content.includes('sorry') || botResponse.content.includes('not found')||botResponse.content.includes('no information')) {
+        if (botResponse.content.includes('sorry') || botResponse.content.includes('apologize')||botResponse.content.includes('not found')||botResponse.content.includes('no information')) {
           // Replace the bot's error message with a custom error message
           botResponse.content = this.formData['error-message']; // Use your custom error message here
         }

@@ -13,7 +13,8 @@ export class SetupFormComponent implements OnInit {
   selectedColor: string = 'gradient1'; // Default color
   userFile: File | null = null; // To store the uploaded PDF file
   submitted: boolean = false; // For showing submission confirmation
-
+  isSubmitting: boolean = false;
+  errorMessage: string = '';
   constructor(
     private route: ActivatedRoute,
     private formDataService: FormDataService, // Inject the service
@@ -95,6 +96,7 @@ export class SetupFormComponent implements OnInit {
   // Method to submit the form
   onSubmit() {
     if (this.userFile && this.isStepValid(this.currentStep)) {
+      this.isSubmitting = true;
       // Prepare data for API request, e.g., create a FormData object
       const formData = new FormData();
       formData.append('pdfFile', this.userFile);
@@ -121,10 +123,13 @@ export class SetupFormComponent implements OnInit {
         })
         .catch((error: any) => {
           console.error('Error uploading PDF:', error);
-          // Handle the error, if needed
+          this.errorMessage = 'An error occurred while uploading the PDF. Please try again later.';
+        }) .finally(() => {
+          // Set isSubmitting back to false when the request is complete
+          this.isSubmitting = false;
         });
     } else {
-      // Handle the case where no file was selected
+      this.errorMessage = 'Please select a PDF file to upload.';
     }
   }
 }
